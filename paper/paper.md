@@ -1,12 +1,16 @@
 ---
-title: 'BioHackEU23 report: Template for the very long title'
-title_short: 'BioHackEU23 #26: unknown chemical substances'
+title: 'BioHackDE25 report: '
+title_short: 'BioHackDE25 #10: On the path to machine-actionable training materials'
 tags:
-  - cheminformatics
-  - PubChem
-  - unknown chemical substances
+- training
+- learning resource
+- metadata schema
+- learning path
+- LLMs
+- metadata exchange
 authors:
-  - name: First Author
+  - name: Phil Reed
+    orcid: 0000-0002-4479-715X
     affiliation: 1
     role: Writing – original draft
   - name: Last Author
@@ -14,20 +18,20 @@ authors:
     affiliation: 2
     role: Conceptualization, Writing – review & editing
 affiliations:
-  - name: First Affiliation
+  - name: The University of Manchester
     index: 1
   - name: ELIXIR Europe
     ror: 044rwnt51
     index: 2
-date: 8 November 2023
+date: 5 December 2025
 cito-bibliography: paper.bib
 event: BH23EU
-biohackathon_name: "BioHackathon Europe 2023"
-biohackathon_url:   "https://biohackathon-europe.org/"
-biohackathon_location: "Barcelona, Spain, 2023"
-group: Project 26
+biohackathon_name: "BioHackathon Germany 2025"
+biohackathon_url:   "https://www.denbi.de/de-nbi-events/1840-4th-biohackathon-germany"
+biohackathon_location: "Walsrode, Geramny, 2025"
+group: Project 10
 # URL to project git repo --- should contain the actual paper.md:
-git_url: https://github.com/biohackrxiv/publication-template
+git_url: https://github.com/PhilReedData/bhde-training-schema-report
 # This is the short authors description that is used at the
 # bottom of the generated paper (typically the first two authors):
 authors_short: First Author \emph{et al.}
@@ -36,7 +40,7 @@ authors_short: First Author \emph{et al.}
 
 # Introduction
 
-As part of the BioHackathon Europe 2023, we here report...
+As part of the BioHackathon Germany 2025, we here report...
 
 ## Meeting information
 
