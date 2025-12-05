@@ -19,6 +19,7 @@ authors:
     role: Conceptualization, Writing – review & editing
 affiliations:
   - name: The University of Manchester
+    ror: 027m9bs27
     index: 1
   - name: ELIXIR Europe
     ror: 044rwnt51
