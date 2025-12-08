@@ -12,18 +12,75 @@ authors:
   - name: Phil Reed
     orcid: 0000-0002-4479-715X
     affiliation: 1
-    role: Writing – original draft
-  - name: Last Author
-    orcid: 0000-0000-0000-0000
+    role: Writing – original draft, Software
+  - name: Nick Juty
+    orcid: 0000-0002-2036-8350
+    affiliation: 1
+    role: Conceptualization, Writing – review & editing
+  - name: Petra Steiner
+    orcid: 0000-0001-8997-2620
     affiliation: 2
     role: Conceptualization, Writing – review & editing
+  - name: Leyla Jael Castro
+    orcid: 0000-0003-3986-0510
+    affiliation: 3
+    role: Methodology, Software, Writing - review & editing
+  - name: Charles Tapley Hoyt
+    orcid: 0000-0003-4423-4370
+    affiliation: 4
+    role: Methodology, Software, Writing - review & editing
+  - name: Oliver Knodel
+    orcid: 0000-0001-8174-7795
+    affiliation: 5
+    role: Methodology, Writing - review & editing
+  - name: Martin Voigt
+    orcid: 0000-0001-5556-838X
+    affiliation: 5
+    role: Software, Writing - review & editing
+  - name: Roman Baum
+    orcid: 0000-0001-5246-9351
+    affiliation: 6
+    role: Software, Writing - review & editing
+  - name: Dilfuza Djamalova
+    orcid: 0009-0004-7782-2894
+    affiliation: 7
+    role: Software, Writing - review & editing
+  - name: Jacobo Miranda
+    orcid: 0009-0005-0673-021X
+    affiliation: 8
+    role: Methodology, Writing - review & editing
+  - name: Alban Gaignard
+    orcid: 0000-0002-3597-8557
+    affiliation: 8
+    role: Methodology, Software
 affiliations:
   - name: The University of Manchester
     ror: 027m9bs27
     index: 1
-  - name: ELIXIR Europe
-    ror: 044rwnt51
+  - name: Technical University of Darmstadt
+    ror: 05n911h24
     index: 2
+  - name: ZB MED
+    ror: 0259fwx54
+    index: 3
+  - name: RWTH Aachen University
+    ror: 04xfq0f34
+    index: 4
+  - name: Helmholtz-Zentrum Dresden-Rossendorf
+    ror: 01zy2cs03
+    index: 5
+  - name: University of Bonn
+    ror: 041nas322
+    index: 6
+  - name: Forschungszentrum Jülich
+    ror: 02nv7yv05
+    index: 7
+  - name: European Molecular Biology Laboratory
+    ror: 03mstc592
+    index: 8
+  - name: University of Nantes
+    ror: 03gnr7b55
+    index: 9
 date: 5 December 2025
 cito-bibliography: paper.bib
 event: BH25DE
@@ -43,89 +100,6 @@ authors_short: First Author \emph{et al.}
 
 As part of the 4th BioHackathon Germany, we here report...
 
-
-## Author information
-
-Information about the authors is given in the [YAML](https://en.wikipedia.org/wiki/YAML) format at the top of this template.
-For authors you provide their names, their affiliations. That is the minimum, but as BioHackrXiv is moving to a situation
-where more metadata is shared, and used by, for example, EuropePMC, adding additional information ie encouraged.
-
-BioHackathons is about hacking together, and the minimal number of authors for reports is two. This makes a minimal example
-look like this:
-
-```yaml
-authors:
-  - name: First Author
-    affiliation: 1
-  - name: Last Author
-    affiliation: 2
-affiliations:
-  - name: First Affiliation
-    index: 1
-  - name: ELIXIR Europe
-    index: 2
-```
-
-### Author identifiers
-
-Ideally, authors provide their [ORCID](https://orcid.org/) identifier. For affiliations, It is added with the `orcid:` field.
-So, and author record would look like this:
-
-```yaml
-authors:
-  - name: First Author
-    affiliation: 1
-    orcid: 0000-0000-0000-0000
-```
-
-### Research Organization Registry identifiers
-
-Matching the author identifier, the affiliations can be further specified with the
-[Research Organization Registry](https://ror.org/) (ROR) identifier.
-For example, this is the affiliation identifier can be added with the `ror:` field:
-
-```yaml
-affiliations:
-  - name: ELIXIR Europe
-    ror: 044rwnt51
-    index: 2
-```
-
-### Contributor Role Taxonomy
-
-A last feature since is minimal support for the Contributor Role Taxonomy (CRediT). You
-can specify the role of authors in writing the report with the `role:` field. However,
-the authors are responsible for selection the right terms from [CRediT](https://credit.niso.org/).
-An example looks like this:
-
-```yaml
-authors:
-  - name: First Author
-    affiliation: 1
-    orcid: 0000-0000-0000-0000
-    role: Conceptualization, Writing – review & editing
-```
-
-### A full examples
-
-A full example then has this structure:
-
-```yaml
-authors:
-  - name: First Author
-    affiliation: 1
-    role: Writing – original draft
-  - name: Last Author
-    orcid: 0000-0000-0000-0000
-    affiliation: 2
-    role: Conceptualization, Writing – review & editing
-affiliations:
-  - name: First Affiliation
-    index: 1
-  - name: ELIXIR Europe
-    ror: 044rwnt51
-    index: 2
-```
 
 # Formatting
 
