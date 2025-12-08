@@ -26,10 +26,10 @@ affiliations:
     index: 2
 date: 5 December 2025
 cito-bibliography: paper.bib
-event: BH23EU
-biohackathon_name: "BioHackathon Germany 2025"
-biohackathon_url:   "https://www.denbi.de/de-nbi-events/1840-4th-biohackathon-germany"
-biohackathon_location: "Walsrode, Geramny, 2025"
+event: BH25DE
+biohackathon_name: "4th BioHackathon Germany"
+biohackathon_url: "https://www.denbi.de/de-nbi-events/1840-4th-biohackathon-germany"
+biohackathon_location: "Walsrode, Germany"
 group: Project 10
 # URL to project git repo --- should contain the actual paper.md:
 git_url: https://github.com/PhilReedData/bhde-training-schema-report
