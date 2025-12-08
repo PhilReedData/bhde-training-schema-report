@@ -1,6 +1,6 @@
 ---
-title: 'BioHackDE25 report: '
-title_short: 'BioHackDE25 #10: On the path to machine-actionable training materials'
+title: 'BH25DE report: On the path to machine-actionable training materials'
+title_short: 'BH25DE: machine-actionable training'
 tags:
 - training
 - learning resource
@@ -41,26 +41,8 @@ authors_short: First Author \emph{et al.}
 
 # Introduction
 
-As part of the BioHackathon Germany 2025, we here report...
+As part of the 4th BioHackathon Germany, we here report...
 
-## Meeting information
-
-If you want to submit a preprint to BioHackrXiv, first check if your meeting is registered. You can find a list
-of meetings [here](https://index.biohackrxiv.org/meetings). If your meeting is missing, please contact your meeting
-organizers. The above list also provides information on the YAML fields with information about the meeting.
-
-The following fields need to be given:
-
-```YAML
-biohackathon_name: "BioHackathon Europe 2023"
-biohackathon_url:   "https://biohackathon-europe.org/"
-biohackathon_location: "Barcelona, Spain, 2023"
-group: Project 26
-git_url: https://github.com/yourOrganization/your_report_repo
-```
-
-The [BioHackrXiv meeting pages](https://index.biohackrxiv.org/meetings) provide content to use for the first
-three fields. The `git_url:` field must have the link to the GitHub repository with your preprint (draft).
 
 ## Author information
 
