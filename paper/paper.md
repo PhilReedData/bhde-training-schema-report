@@ -198,7 +198,7 @@ Observations of learning path similarity:
 
 ![Statistical analysis](./stats.png)
 
-![Chart showing distribution of cosine similarities between TeSS training materials](./cosine.png){ width=100px }
+![Chart showing distribution of cosine similarities between TeSS training materials](./cosine.png){ width=200px }
 
 
 ## Why it is useful, the impact of this work
