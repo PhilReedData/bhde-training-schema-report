@@ -92,7 +92,7 @@ group: Project 10
 git_url: https://github.com/PhilReedData/bhde-training-schema-report
 # This is the short authors description that is used at the
 # bottom of the generated paper (typically the first two authors):
-authors_short: First Author \emph{et al.}
+authors_short: Reed, P. \emph{et al.}
 ---
 
 # Abstract
@@ -109,30 +109,79 @@ One way to address these challenges would be to offer a federated solution, conn
 
 In this project, we worked in parallel, interrelated streams:
 
-* Interlinked related materials as Learning Paths where appropriate, and explore means to facilitate future automation.   
-* Develop a strategy to identify similar or related training materials from distributed resources.  
-* Improve the schemas.science profiles concerning ‘Course’ and ‘TrainingMaterial’ to propose how those could be updated to incorporate properties that facilitate exposure in Learning Paths. 
+1. Training material interoperability  
+   * Identifying and indexing relevant ontologies, controlled vocabularies, and schemas for learning materials and ( open) educational resources  
+   * Curating mappings between ontologies and controlled vocabularies terms and crosswalks between schemas. Specifically, we focused on curating crosswalks between the representations of learning materials in the schemas from MoDALIA and Schema.org  
+   * Implemented in the OERbservatory Python package  
+   * Demonstrated federation in the mTeSS-X platform  
+2. Training material analysis  
+   * Identify similar training materials to:  
+   * Deduplicate and merge records across registries  
+   * Connect training material producers, consolidate efforts  
+3. Organisation into learning paths  
+   * Collect examples of learning paths  
+   * Developed a schema that groups learning materials into a logical and modular ordering  
+   * Mock a schema by extending Schema.org
 
 The first day of the project began with a series of short presentations from several of the authors, plus a demonstration of ELIXIR BioHackathon Europe work titled ‘Mining the potential of knowledge graphs for metadata on training’ by Dimitris Panouris and Harshita Gupta of SciLifeLab [@citesForInformation:Panouris2025].
 
 
 # Training material interoperability
 
-Authors: Petra Steiner, Charles Tapley Hoyt, Oliver Knodel, Martin Voigt, Jacobo Miranda,  
+Authors: Charles Tapley Hoyt, Oliver Knodel, Martin Voigt, Jacobo Miranda, Petra Steiner 
 
-Contributors: Phil Reed, Leyla Jael Castro, 
+Contributors: Phil Reed, Leyla Jael Castro 
 
-## Summary of Track B: Express relations between materials
-
-**Description: Interlink related materials as Learning Paths where appropriate, and explore means to facilitate future automation.**
 
 ## What we did
 
-There were three pieces of work in this track:
+We started the week off discussing best practices for identifiers:
 
-* Curated crosswalks between MoDALIA and Schema.org metadata models for training materials  
-* Implemented in the OERbservatory Python package  
-* Demonstrated federation in the mTeSS-X platform
+- Identifiers support the interoperability aspect of FAIR data
+- Linked (open) data - when different resources use the same identifiers, we can
+  automatically integrate them Knowledge Graphs and Federated SPARQL Queries
+- Resolve structured, machine-readable data to human-readable (and LLM-readable)
+  via the web
+
+The Semantic Farm ([https://semantic.farm](https://semantic.farm)) is:
+
+1. The most comprehensive database of CURIE prefixes, URI prefixes, identifier
+   standards, and metadata about (semantic web) identifiers
+2. Imports and aligns related efforts like Identifiers.org, Name-to-Thing,
+   BARTOC
+3. Open data, open code, and open infrastructure + well-defined governance to
+   enable community maintenance and support longevity
+4. Domain- and community-driven collections, subsets, and conflict resolution
+
+[Martin Voigt](https://orcid.org/0000-0001-5556-838X) contributed the prefix
+`amb` for the
+[Allgemeines Metadatenprofil für Bildungsressourcen](https://dini-ag-kim.github.io/amb/20231019)
+(General Metadata Profile for Educational Resources) in
+[biopragmatics/bioregistry#1781](https://github.com/biopragmatics/bioregistry/pull/1781).
+This is a metadata schema for learning materials produced by the
+Kompetenzzentrum Interoperable Metadaten (KIM) within the Deutsche Initiative
+für Netzwerkinformation e.V. that was heavily inspired by
+[Schema.org](https://schema.org) and the Dublin Core
+[Learning Resource Metadata Initiative (LRMI)](https://www.dublincore.org/about/lrmi/)
+
+[Dilfuza Djamalova](https://orcid.org/0009-0004-7782-2894) and
+[Jacobo Miranda](https://orcid.org/0009-0005-0673-021X) contributed the prefix
+`gtn` for
+[Galaxy Training Network](https://training.galaxyproject.org/training-material)
+training materials in
+[biopragmatics/bioregistry#1779](https://github.com/biopragmatics/bioregistry/pull/1779).
+This resource contains multi- and cross-disciplinary training materials for
+using the Galaxy workflow management system. Below, I describe how we ingested
+transformed the training materials from GTN into a common format such they can
+be represented according to the DALIA Interchange Format (DIF) v1.3, the
+implicit data model expected by TeSS, and in Bioschemas-compliant RDF.
+
+Both before and during the hackathon, we contributed several other records for
+ontologies, controlled vocabularies, databases, and schemas to the Semantic
+Farm. Finally, we collated them in a
+[collection](https://semantic.farm/collection/0000018) such that they can be
+easily found and shared.
+
 
 ![Curated crosswalks between MoDALIA and Schema.org metadata models for training materials](./mapping-sssom.png)
 
@@ -154,10 +203,6 @@ mTeSS-X Strategic Planning. Prepared for focus group demonstration of exchanged 
 
 Authors: Nick Juty, Dilfuza Djamalova, Charles Tapley Hoyt  
 Contributors: Phil Reed
-
-## Summary of Track A: Identify similar materials
-
-**Description: Develop a strategy to identify similar or related training materials from distributed resources.**
 
 ## What we did
 
@@ -213,10 +258,6 @@ Observations of learning path similarity:
 Authors: Phil Reed, Alban Gaignard, Leyla Jael Castro  
 Contributors: Nick Juty, Roman Baum
 
-## Summary of Track C: Schemas and automation
-
-**Description: Improve the schemas.science profiles concerning ‘Course’ and ‘TrainingMaterial’ to propose how those could be updated to incorporate properties that facilitate exposure in Learning Paths.**
-
 ## What we did
 
 Bioschemas aims to improve the Findability on the Web of life sciences resources such as datasets, software, and training materials. It does this by encouraging people in the life sciences to use Schema.org markup in their websites so that they are indexable by search engines and other services. Schemas.science is a collection of domain-agnostic schemas taken from Bioschemas, for concepts such as training materials that are applicable to all domains. There is currently no definition for describing learning pathways of training materials in these schemas, thus limiting the Findability of such resources. 
@@ -244,7 +285,7 @@ We used the existing type Course, and the existing type Syllabus, to define a ne
 
 We can query the learning path knowledge graph using SPARQL, to navigate the path. For example, to identify the prerequisites for a given training material in a path:
 
-SPARQL query on the learning path as a knowledge graph 
+![SPARQL query on the learning path as a knowledge graph](./sparql.png)
 
 Further details are provided [in the GitHub repository](https://github.com/BioSchemas/LearningPath-sandbox/).
 
