@@ -112,7 +112,7 @@ In this project, we worked in three parallel, interrelated streams:
 1. Training material interoperability  
    * Identifying and indexing relevant ontologies, controlled vocabularies, and schemas for learning materials and (open) educational resources.  
    * Curating mappings between ontologies and controlled vocabularies terms and crosswalks between schemas. Specifically, we focused on curating crosswalks between the representations of learning materials in the schemas from MoDALIA and Schema.org/Bioschemas.  
-   * Implementingmappings in the OERbservatory Python package.  
+   * Implementing mappings in the OERbservatory Python package.  
    * Proposals for a demonstration of federation in the mTeSS-X platform.  
 2. Training material analysis  
    * Identifying similar training materials using LLMs and prompt engineering.  
@@ -126,72 +126,55 @@ In this project, we worked in three parallel, interrelated streams:
 The first day of the project began with a [series of short presentations](https://docs.google.com/document/d/1KpRX1Q777Fzz8dcAx1jgiipiH6Zyir33_ds0xPK7M50/edit?usp=sharing) from several of the authors, plus a demonstration of ELIXIR BioHackathon Europe work titled ‘Mining the potential of knowledge graphs for metadata on training’ by Dimitris Panouris and Harshita Gupta of SciLifeLab. [@citesForInformation:Panouris2025]
 
 
-# Training material interoperability
+# Training material interoperability; express relations between materials
 
 Authors: Charles Tapley Hoyt, Oliver Knodel, Martin Voigt, Jacobo Miranda, Petra Steiner 
 
 Contributors: Phil Reed, Leyla Jael Castro 
 
 
-## What we did
+## Interoperability through semantic mapping and crosswalks
 
-We started the week off discussing best practices for identifiers:
+Interoperability is the third pillar of the [FAIR data principles](https://www.nature.com/articles/sdata201618). Metadata describing training materials may be captured and stored in one of several data models including the DALIA Interchange Format (DIF) v1.3, the format implicitly defined by the TeSS API, and the Schema.org [LearningResource](https://schema.org/LearningResource) type. Further, metadata records conforming to these data models are filled with references to terms in other ontologies, controlled vocabularies, databases, and other resources that mint (persistent) identifiers. Our overarching goal at the hackathon was to improve interoperability on both levels.
 
-- Identifiers support the interoperability aspect of FAIR data
-- Linked (open) data - when different resources use the same identifiers, we can
-  automatically integrate them Knowledge Graphs and Federated SPARQL Queries
-- Resolve structured, machine-readable data to human-readable (and LLM-readable)
-  via the web
+The Semantic Farm ([https://semantic.farm](https://semantic.farm/)) is a comprehensive database of metadata about resources that mint (persistent) identifiers (such as ontologies, controlled vocabularies, databases, schemas). It imports and aligns with other databases like [Identifiers.org](https://identifiers.org/) (for the life sciences) and [BARTOC](https://bartoc.org/) (for the digital humanities) to support interoperability and sustainability. The hackathon team produced [several valuable entries to the Semantic Farm](https://semantic.farm/collection/0000018) to better support the mapping and discovery of cross-disciplinary training materials, details of which can be found on the Biopragmatics blog \[@citesForInformation:TapleyHoyt2025\].
 
-The Semantic Farm ([https://semantic.farm](https://semantic.farm)) is:
-
-1. The most comprehensive database of CURIE prefixes, URI prefixes, identifier
-   standards, and metadata about (semantic web) identifiers
-2. Imports and aligns related efforts like Identifiers.org, Name-to-Thing,
-   BARTOC
-3. Open data, open code, and open infrastructure + well-defined governance to
-   enable community maintenance and support longevity
-4. Domain- and community-driven collections, subsets, and conflict resolution
-
-[Martin Voigt](https://orcid.org/0000-0001-5556-838X) contributed the prefix
-`amb` for the
-[Allgemeines Metadatenprofil für Bildungsressourcen](https://dini-ag-kim.github.io/amb/20231019)
-(General Metadata Profile for Educational Resources) in
-[biopragmatics/bioregistry#1781](https://github.com/biopragmatics/bioregistry/pull/1781).
-This is a metadata schema for learning materials produced by the
-Kompetenzzentrum Interoperable Metadaten (KIM) within the Deutsche Initiative
-für Netzwerkinformation e.V. that was heavily inspired by
-[Schema.org](https://schema.org) and the Dublin Core
-[Learning Resource Metadata Initiative (LRMI)](https://www.dublincore.org/about/lrmi/)
-
-[Dilfuza Djamalova](https://orcid.org/0009-0004-7782-2894) and
-[Jacobo Miranda](https://orcid.org/0009-0005-0673-021X) contributed the prefix
-`gtn` for
-[Galaxy Training Network](https://training.galaxyproject.org/training-material)
-training materials in
-[biopragmatics/bioregistry#1779](https://github.com/biopragmatics/bioregistry/pull/1779).
-This resource contains multi- and cross-disciplinary training materials for
-using the Galaxy workflow management system. Below, I describe how we ingested
-transformed the training materials from GTN into a common format such they can
-be represented according to the DALIA Interchange Format (DIF) v1.3, the
-implicit data model expected by TeSS, and in Bioschemas-compliant RDF.
-
-Both before and during the hackathon, we contributed several other records for
-ontologies, controlled vocabularies, databases, and schemas to the Semantic
-Farm. Finally, we collated them in a
-[collection](https://semantic.farm/collection/0000018) such that they can be
-easily found and shared.
-
+Curating correspondences between concepts in ontologies, controlled vocabularies, and databases is often called semantic mapping. In contrast, curating correspondences between schemas and the properties therein is often called crosswalks. We put an emphasis on producing crosswalks between Schema.org and MoDALIA. This is a complex problem due to the fact that correspondences between elements in schemas can be more sophisticated (for example, mapping between two fields for first and last names to a single name field).
 
 ![Curated crosswalks between MoDALIA and Schema.org metadata models for training materials](./mapping-sssom.png)
 
+### Implementation of mappings and interchange
+
+The OERbservatory Data Model was proposed as an interoperability hub between DALIA and TeSS. During the hackathon, we implemented the open source [OERbservatory](https://github.com/data-literacy-alliance/oerbservatory) Python package. It includes three major features:
+
+1. a unified, generic [object model](https://github.com/data-literacy-alliance/oerbservatory/blob/main/src/oerbservatory/model.py) for open educational resources that’s effectively the union of the best parts of DALIA, TeSS, Schema.org, and a few other data models we found  
+2. import and export to two open educational resource and learning materials data models - DALIA and TeSS. We didn’t have time during the hackathon to implement import and export to Schema.org.  
+3. import from three external learning material repositories - [OERhub](https://oerhub.at/), [OERSI](https://oersi.org/), and the [Galaxy Training Network (GTN)](https://training.galaxyproject.org/).
+
+[Further](https://training.galaxyproject.org/) details of OERbservatory can be found on the Biopragmatics blog [@citesForInformation:TapleyHoyt2025].
+
 ![Interchange via the OERbservatory](./interchange-repo.png)
 
-![mTeSS-X strategic planning](./tesshub.png)
+### Preparing for EOSC federation
 
-mTeSS-X Strategic Planning. Prepared for focus group demonstration of exchanged training materials. Looking ahead to share to the EOSC Catalog.
+Proposals for a demonstration of federation in the mTeSS-X platform.
 
-## Why it is useful, the impact of this work
+The next step towards interoperability beyond the conversion between formats used by DALIA and TeSS was to demonstrate actually posting the content to the live services.
+
+While we are currently in the process of implementing submission of open educational resources and learning materials in DALIA, TeSS already has a web-based interface for registering new learning materials. We implemented posting learning materials in the TeSS-specific Python package in [cthoyt/tess-downloader\#2](https://github.com/cthoyt/tess-downloader/pull/2). Then, it was only a matter of stringing together code that converts DALIA to OERbservatory, OERbservatory to TeSS, and then to upload to TeSS.
+
+In parallel, Martin worked on improving the devops behind the [PaNOSC TeSSHub](https://tesshub.hzdr.de/) to enable quickly spinning up new TeSS instances that each have their own subdomain. He created a different subdomain for each of DALIA, OERSI, GTN/KCD, and OERhub. Finally, we wrote a script that uploaded all open educational resources and learning material from each source to the appropriate TeSS instance in [data-literacy-alliance/oerbservatory\#3](https://github.com/data-literacy-alliance/oerbservatory/pull/3). The results in each space can be explored here:
+
+|Source	|Domain|  
+|---|---|  
+|DALIA	|https://dalia.tesshub.hzdr.de|  
+|OERhub	|https://oerhub.tesshub.hzdr.de|  
+|OERSI	|https://oersi.tesshub.hzdr.de|  
+|GTN/deKCD	|https://kcd.tesshub.hzdr.de|  
+|PanOSC	|https://panosc.tesshub.hzdr.de|
+
+![mTeSS-X strategic planning. Prepared for focus group demonstration of exchanged training materials. Looking ahead to share to the EOSC Catalogue.](./tesshub.png)
+
 
 ## Future work
 
@@ -199,21 +182,27 @@ mTeSS-X Strategic Planning. Prepared for focus group demonstration of exchanged 
 * New deployment of DALIA implementing interoperability layer.
 
 
-# Training material analysis
+# Training material analysis; identify similar materials
 
 Authors: Nick Juty, Dilfuza Djamalova, Charles Tapley Hoyt  
-Contributors: Phil Reed
+Contributors: Phil Reed, Leyla Jael Castro
 
 ## What we did
 
-Analog to Swiss-Prot (80s) vs TrEMBL (90s) in UniProt  
-Can we automatically pick up related materials from distributed resources and arrange them into a learning path?  
-Can we generate learning path suggestions dynamically from registries of materials with sufficient metadata?
+One aim of this track was to develop a strategy to identify similar or related materials from distributed resources. High quality metadata has been used to automatically construct or modify personalised learning paths of materials for over 20 years [@citesForInformation:Colace2005]. Tools and techniques have improved since then, most recently with the availability of generative AI. Furthermore, we considered an analogous progression, that of Swiss-Prot (1980s) versus TrEMBL (1990s), where ... TODO
+
+Two questions emerged from the group discussions:
+
+* Can we automatically pick up related materials from distributed resources and arrange them into a learning path?  
+* Can we generate learning path suggestions dynamically from registries of materials with sufficient metadata?
+
+We looked into using large language models (LLMs) to construct learning paths through machine-assisted dialogue. The idea was to take in a list of learning materials (either hard-coded or as a URL for the chat system to retrieve) and a prompt to ask the LLM to collect similar materials based on objectives and keywords, then create a learning path based on difficult (which is infrequently annotated) and suggest a title.
+
 
 ![Suggest learning paths from materials using LLM](./copilot.png)
 
+We constructed a workflow formed of a basic prompt, built in comparison of topics, with a weighting of ‘properties’ using embedded metadata (with differing quality/availability).
 
-Basic prompt, build in comparison of topics, weighting of ‘properties’ using embedded metadata (differing quality/availability).
 
 Table: Prompt input
 
@@ -233,6 +222,9 @@ Table: Prompt output. Each path (named) is ordered, reference link, difficulty r
 | Path 2: Git and Version Control | 6 items |
 | Path 3: Genome Annotation | 8 items |
 
+Working in parallel, other team members were ... TODO
+
+
 Observations of learning path similarity:
 
 * Detect duplicate materials  
@@ -248,12 +240,21 @@ Observations of learning path similarity:
 
 ## Why it is useful, the impact of this work
 
+* Provide contributions to the mTeSS-X project  
+* Provide contributions to the ELIXIR Training Platform for potential use in knowledge graph work  
+* Propose a potential service to sit outside a training registry, to query the graph to find appropriate materials, to build a learning path given the user’s criteria  
+* Create an opportunity to embellish and expand existing curated learning paths.
+
+
 ## Future work
 
-* 
+* Exploring further using LLMs.  
+* More formal way of measuring similarity between materials, dynamically (at different levels, in different domains, in different formats eg video/text).  
+* Dependent on high quality metadata at the level of individual training materials, so there are recommendations for training registries.
 
 
-# Organisation into learning paths
+# Organisation into learning paths; schemas and automation
+
 
 Authors: Phil Reed, Alban Gaignard, Leyla Jael Castro  
 Contributors: Nick Juty, Roman Baum
@@ -262,7 +263,7 @@ Contributors: Nick Juty, Roman Baum
 
 Bioschemas aims to improve the Findability on the Web of life sciences resources such as datasets, software, and training materials. It does this by encouraging people in the life sciences to use Schema.org markup in their websites so that they are indexable by search engines and other services. Schemas.science is a collection of domain-agnostic schemas taken from Bioschemas, for concepts such as training materials that are applicable to all domains. There is currently no definition for describing learning pathways of training materials in these schemas, thus limiting the Findability of such resources. 
 
-Work on this track began at the ELIXIR BioHackathon Europe 2025 [@citesForInformation:Panouris2025]. We investigated the requirements for a learning path profile in Bioschemas (and therefore in schemas.science), using two distinct real examples. We described these examples using RDF triples that are valid Schema.org, then described two new Bioschemas profiles. We created a knowledge graph of each learning path example and ran SPARQL queries to confirm that the relationship between the materials was valid, that there was a path that could be traversed. The knowledge graphs could be expressed as RDF and JSON-LD.
+Work on this track began at the ELIXIR BioHackathon Europe 2025 [@citesForInformation:Panouris2025]. We investigated the requirements for a learning path profile in Bioschemas (and therefore in schemas.science), using two distinct real examples. We described these examples using RDF triples that are valid Schema.org, then we described two new Bioschemas profiles. We created a knowledge graph of each learning path example and ran SPARQL queries to confirm that the relationship between the materials was valid, that there was a path that could be traversed. The knowledge graphs could be expressed as RDF and JSON-LD.
 
 Table: Identified two existing learning paths
 
@@ -281,7 +282,7 @@ Table: Identified two existing learning paths
 
 ![Class diagram: proposal for Bioschemas and Schema.org with two new profiles](./lp-class.png)
 
-We used the existing type Course, and the existing type Syllabus, to define a new profile LearningPath, which contains one or more LearningPathModule as syllabus sections. Each LearningPathModule contains a list of training materials. The lists are ordered by inheriting from the ListItem profile, providing us with the nextItem property, so each item in a list has a reference to the next. This schema supports linear learning paths, as used by LinkedIn Learning, Coursera, edX and many other providers. A later version of these schemas could be developed to support the full ELIXIR Learning Path with multiple paths, after it is formally published and implemented. 
+We used the existing type [Course](https://schema.org/Course), and the existing type [Syllabus](https://schema.org/Syllabus), to define a new profile LearningPath, which contains one or more LearningPathModule as syllabus sections. Each LearningPathModule contains a list of training materials. The lists can be [ordered](https://en.wikipedia.org/wiki/Linked_list) since we also inherit from the [ListItem](https://schema.org/ListItem) type, providing us with the \`nextItem\` property, so each item in a list has a reference (link) to the next. (We cannot rely on the order of the list items presented in the code to be maintained when it is parsed into a knowledge graph, unless there is an expressly described link between each item.) Branch points within a learning path could be implemented using the \`position\` property of ListItem, or by having multiple values for \`nextItem\`. This schema supports linear learning paths, as used by LinkedIn Learning, Coursera, edX and many other providers. A later version of these schemas could be developed to support the full ELIXIR Learning Path with multiple paths, after it is formally published and implemented. 
 
 We can query the learning path knowledge graph using SPARQL, to navigate the path. For example, to identify the prerequisites for a given training material in a path:
 
@@ -289,13 +290,13 @@ We can query the learning path knowledge graph using SPARQL, to navigate the pat
 
 Further details are provided [in the GitHub repository](https://github.com/BioSchemas/LearningPath-sandbox/).
 
-We also started to look at how DALIA supports learning paths, and how to easily map between their MoDALIA specification and this proposed Bioschemas. Further details are provided in our [learning paths planning document](https://docs.google.com/document/d/1T7Sm8kiD3GmZYe5H2Cop2Rk--N2lbJ07llLY5nBGKAI/edit?usp=sharing).
+We also started to look at how DALIA supports learning paths, and how to easily map between their MoDALIA specification and these proposed Bioschemas profiles. Further details are provided in our [learning paths planning document](https://docs.google.com/document/d/1T7Sm8kiD3GmZYe5H2Cop2Rk--N2lbJ07llLY5nBGKAI/edit?usp=sharing).
 
 ## Why it is useful, the impact of this work
 
-TeSS has been unable to automate the ingestion of learning paths because there was no definition in Bioschemas. The publication of such a schema will enable richer ingestion and exchange of materials between catalogues using the TeSS Platform and other platforms. 
+TeSS has been unable to automate the ingestion of learning paths because there was no definition in Bioschemas. The publication of such a schema will enable richer ingestion and exchange of materials between catalogues using the TeSS Platform and other platforms. These advances will greatly benefit users who need to develop new knowledge and don’t know where to begin.
 
-The Galaxy Training Network is already using Syllabus in this way to describe their learning paths in metadata, but they do not include any of the materials or the order of modules.
+The Galaxy Training Network is already using [Syllabus](https://schema.org/Syllabus) in this way to describe their learning paths in metadata ([example](https://training.galaxyproject.org/training-material/learning-pathways/intro_single_cell.html), view the HTML source and look for the JSON-LD Bioschemas markup). However, in GTN does not currently include any of the materials with the learning path markup, just the path and its authors. They also do not have a way to represent the order of modules. The new Bioschemas profiles, once published, could also be implemented in GTN to improve their interoperability, and any other learning paths provider using Bioschemas.
 
 ## Future work
 
@@ -304,22 +305,29 @@ The Galaxy Training Network is already using Syllabus in this way to describe th
 * Define the mapping between MoDALIA and Bioschemas for learning paths.
 
 
-# Connections between tracks 
+# Discussion
 
-## Summary of the work that did not fit into one track
+## Provocation
 
-## What we did
+* Analysis, augmentation and generation of learning paths
 
-## Why it is useful, the impact of this work
+## Analysis
 
-## Future work
+* Learning paths need to be extendable. Adding a step at any position creates another valid learning path.  
+
+## Recommendations
+
+* Dynamic building, registration and documenting of learning paths
 
 # Conclusion
 
 
 # GitHub repositories, Jupyter notebooks and data repositories
 
-* OERbservatory  
+* [data-literacy-alliance/dalia-dif](https://github.com/data-literacy-alliance/dalia-dif) implements a parser for the DALIA DIF v1.3 tabular format, an internal representation of the content (using Pydantic), and an RDF serialiser  
+* [cthoyt/tess-downloader](https://github.com/cthoyt/tess-downloader) implements an API client to TeSS and an internal representation of the learning resource data model (using Pydantic)  
+* [OERbservatory](https://github.com/data-literacy-alliance/oerbservatory)  
+* mTeSS-X: [TeSS Platform](https://github.com/ElixirTeSS/TeSS)  
 * [Learning Paths Sandbox (Bioschemas)](https://github.com/BioSchemas/LearningPath-sandbox)
 
 
