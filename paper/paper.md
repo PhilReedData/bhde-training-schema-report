@@ -103,27 +103,27 @@ authors_short: Reed, P. \emph{et al.}
 
 **Overall aim: Enable developers to build systems that support learners to find relevant training materials.**
 
-The distributed and fragmented nature of training materials across research infrastructures, institutions, and within project silos often leads to duplication of materials, wasted resources and storage, the inefficient use of those materials in upskilling personnel, and contributes to the lack of sustainability of the materials themselves. This situation is further exacerbated when considering cross-disciplinary materials, such as those for Research Data Management, which could be used across multiple domains. Several metadata standards are used by training catalogues, including schema.org and schemas.science. 
+The distributed and fragmented nature of training materials across research infrastructures, institutions, and within project silos often leads to duplication of materials, wasted resources and storage, the inefficient use of those materials in upskilling personnel, and contributes to the lack of sustainability of the materials themselves. This situation is further exacerbated when considering cross-disciplinary materials, such as those for Research Data Management, which could be used across multiple domains. Several metadata standards are used by training catalogues, including Schema.org, Bioschemas and schemas.science. These search engine-based learning object metadata models enjoy a widespread adoption, although education-based data models are also available [@citesForInformation:Sonnati2024]. 
 
-One way to address these challenges would be to offer a federated solution, connecting across those project/institutional communities, and promoting a cohesive strategy towards FAIR and open training. This would additionally facilitate the identification of Learning Paths or trajectories to enable individuals to leverage content across multiple ‘siloed’ materials, to achieve knowledge goals. It could also offer ‘alternative’ paths across the problem space, which would be exposed, recognised and attributed, thereby identifying the original contributors. Many Learning Paths are linear and sequential, lacking legitimate and viable alternative trajectories.
+One way to address these challenges would be to offer a federated solution, connecting across those project or institutional communities, and promoting a cohesive strategy towards FAIR and open training. The OSCARS mTeSS-X project strives to support this approach by using multi-tenancy and enabling cross-instance content exchange, for registries based on the TeSS Platform (Reed, 2025). This project would additionally facilitate the identification of learning paths or trajectories to enable individuals to leverage content across multiple ‘siloed’ materials, to achieve knowledge goals. Significant progress has been made by the [ELIXIR Learning Paths Focus Group](https://elixir-europe.org/focus-groups/learning-paths) to develop a learning paths protocol to guide learners to progressively acquire knowledge and skills on a subject of interest [@citesForInformation:Caradona, 2022]. Examples of learning paths developed by this protocol will launch throughout 2026.Additionally, ‘alternative’ paths could be offered across the problem space, which would be exposed, recognised and attributed, thereby identifying the original contributors. Many existing learning paths are linear and sequential, lacking legitimate and viable alternative trajectories.
 
-In this project, we worked in parallel, interrelated streams:
+In this project, we worked in three parallel, interrelated streams:
 
 1. Training material interoperability  
-   * Identifying and indexing relevant ontologies, controlled vocabularies, and schemas for learning materials and ( open) educational resources  
-   * Curating mappings between ontologies and controlled vocabularies terms and crosswalks between schemas. Specifically, we focused on curating crosswalks between the representations of learning materials in the schemas from MoDALIA and Schema.org  
-   * Implemented in the OERbservatory Python package  
-   * Demonstrated federation in the mTeSS-X platform  
+   * Identifying and indexing relevant ontologies, controlled vocabularies, and schemas for learning materials and (open) educational resources.  
+   * Curating mappings between ontologies and controlled vocabularies terms and crosswalks between schemas. Specifically, we focused on curating crosswalks between the representations of learning materials in the schemas from MoDALIA and Schema.org/Bioschemas.  
+   * Implementingmappings in the OERbservatory Python package.  
+   * Proposals for a demonstration of federation in the mTeSS-X platform.  
 2. Training material analysis  
-   * Identify similar training materials to:  
-   * Deduplicate and merge records across registries  
-   * Connect training material producers, consolidate efforts  
+   * Identifying similar training materials using LLMs and prompt engineering.  
+   * Deduplicating and merging records across registries.  
+   * Connecting training material producers at institutional and individual level, consolidating efforts.  
 3. Organisation into learning paths  
-   * Collect examples of learning paths  
-   * Developed a schema that groups learning materials into a logical and modular ordering  
-   * Mock a schema by extending Schema.org
+   * Collecting examples of learning paths  
+   * Developing a schema that groups learning materials into a logical and modular ordering  
+   * Mocking up a schema by extending Schema.org/Bioschemas
 
-The first day of the project began with a series of short presentations from several of the authors, plus a demonstration of ELIXIR BioHackathon Europe work titled ‘Mining the potential of knowledge graphs for metadata on training’ by Dimitris Panouris and Harshita Gupta of SciLifeLab [@citesForInformation:Panouris2025].
+The first day of the project began with a [series of short presentations](https://docs.google.com/document/d/1KpRX1Q777Fzz8dcAx1jgiipiH6Zyir33_ds0xPK7M50/edit?usp=sharing) from several of the authors, plus a demonstration of ELIXIR BioHackathon Europe work titled ‘Mining the potential of knowledge graphs for metadata on training’ by Dimitris Panouris and Harshita Gupta of SciLifeLab. [@citesForInformation:Panouris2025]
 
 
 # Training material interoperability
