@@ -97,7 +97,13 @@ authors_short: Reed, P. \emph{et al.}
 
 # Abstract
 
+The fragmentation of training materials across research infrastructures often results in unsustainable resource duplication and significant barriers to upskilling. This work aims to enable developers to build systems that effectively discover relevant materials by promoting a federated, **FAIR-compliant strategy** for open training. The project operated across three interrelated streams: metadata **interoperability**, material **analysis**, and the organisation of **learning paths**.
 
+To enhance interoperability, we indexed relevant ontologies and curated semantic **crosswalks** between established metadata models, specifically **MoDALIA** and **Schema.org/Bioschemas**. These mappings were implemented within the open-source **OERbservatory** Python package, providing a facility for exchanging data between platforms such as DALIA and TeSS. For material analysis, we utilised **Large Language Models (LLMs)** and vectorisation techniques to calculate cosine similarity, allowing for the identification of related materials and the deduplication of records across registries.
+
+To address the lack of machine-actionable trajectories, we proposed **new Bioschemas profiles** specifically for **learning paths**. By extending Schema.org types, including Course and Syllabus, we developed a schema that supports modular and linear orderings of training materials. This model was validated using SPARQL queries on knowledge graphs derived from real-world examples like the Galaxy Training Network.
+
+Finally, we demonstrated content **federation** via the **mTeSS-X** platform, enabling cross-instance exchange and preparing for future integration with the EOSC federation. These advancements provide a foundation for automated path generation and improved discoverability within training catalogues.
 
 # Introduction
 
@@ -321,6 +327,11 @@ The Galaxy Training Network is already using [Syllabus](https://schema.org/Sylla
 
 # Conclusion
 
+The German BioHackathon 2025 successfully advanced the transition towards **machine-actionable training materials** by addressing the fragmentation of resources across research infrastructures. Through three parallel workstreams, the project established a robust framework for **training material interoperability, analysis, and organisation**.
+
+Key technical outputs include the **OERbservatory Python package**, which serves as an interoperability hub by implementing semantic crosswalks between **MoDALIA and Schema.org/Bioschemas**. Furthermore, the application of **Large Language Models (LLMs) and vectorisation techniques** proved effective for calculating cosine similarity, enabling the identification of related materials and the potential for automated, machine-assisted learning path generation. By extending existing Schema.org types, the team proposed new **Bioschemas profiles** that support modular and traversable learning trajectories, validated through **SPARQL queries** on knowledge graphs.
+
+The demonstration of content federation via the **mTeSS-X platform** marks a critical step towards a **FAIR-compliant, open training ecosystem**. These advancements facilitate the exchange of materials between previously siloed registries and prepare for future integration with the **EOSC federation**. Ultimately, this work provides the necessary schemas and tools to automate the ingestion of learning paths, thereby enhancing discoverability and supporting learners in achieving their knowledge goals. Future efforts will focus on the formal adoption of these profiles within the **ELIXIR Training Platform** and the continued refinement of similarity metrics for dynamic path curation.
 
 # GitHub repositories, Jupyter notebooks and data repositories
 
