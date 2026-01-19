@@ -226,7 +226,7 @@ We further tested using materials from Galaxy that were related versus materials
 Table: Testing similarity of related and unrelated materials
 
 | Pairs of material | Similarity score |
-| :---- | :---- |
+| :---- | :--- |
 | Related: ["A short introduction to Galaxy"](https://training.galaxyproject.org/training-material/topics/introduction/tutorials/galaxy-intro-short/tutorial.html) and ["Galaxy Basics for Genomics"](https://training.galaxyproject.org/training-material/topics/introduction/tutorials/galaxy-intro-101/tutorial.html) | 92% |
 | Unrelated: ["Access tomotools from visa.esrf.fr"](https://pan-training.tesshub.hzdr.de/materials/access-tomotools-from-visa-esrf-fr?lp=2%3A5) and ["Galaxy Basics for Genomics"](https://training.galaxyproject.org/training-material/topics/introduction/tutorials/galaxy-intro-101/tutorial.html) | 17% |
 
@@ -251,7 +251,7 @@ Towards the end of our work, we collected a variety of ‘random’ Training Mat
 Table: Prompt output. Each path (named) is ordered, reference link, difficulty rating, individual title, licence and provider
 
 | Output (Lesson subject) | Size (Training material items) |
-| :---- | :---- |
+| :---- | ----: |
 | Path 1: Sequencing and QC | 10 items |
 | Path 2: Git and Version Control | 6 items |
 | Path 3: Genome Annotation | 8 items |
@@ -267,49 +267,57 @@ One such dynamically generated Learning Path is given below. Note that these are
 
 **Materials in this learning path**
 
-* **Genome annotation with Maker (GTN hands‑on)** — *Topic:* Genomics / Genome Annotation (eukaryote);  \
+* **Genome annotation with Maker (GTN hands‑on)** — \
+  *Topic:* Genomics / Genome Annotation (eukaryote);  \
   *Link:* <https://tess.elixir-europe.org/materials/hands-on-for-genome-annotation-with-maker-tutorial>;  \
   *Licence:* Creative Commons Attribution 4.0 International (CC BY 4.0);  \
   *Difficulty:* Active tutorial;  \
   *What you’ll do:* Load a genome in Galaxy, run **Maker**, evaluate with **BUSCO**, and visualize in **JBrowse**. 
 
-* **Hands‑on: Genome annotation with Maker (short)** — *Topic:* Genome annotation (eukaryote);  \
+* **Hands‑on: Genome annotation with Maker (short)** — \ 
+  *Topic:* Genome annotation (eukaryote);  \
   *Link:* <https://tess.elixir-europe.org/materials/hands-on-genome-annotation-with-maker-genome-annotation-with-maker-genome-annotation>;  \
   *Licence:* CC BY 4.0;  \
   *Difficulty:* Intermediate;  \
   *Why include:* A condensed Maker route that complements the full tutorial and reinforces structural annotation steps. 
 
-* * **Genome annotation with Helixer** — *Topic:* Genomics / Biodiversity (eukaryota);  \
+* **Genome annotation with Helixer** — \
+  *Topic:* Genomics / Biodiversity (eukaryota);  \
   *Link:* <https://tess.elixir-europe.org/materials/genome-annotation-with-helixer>;  \
   *Licence:* CC BY 4.0;  \
   *Difficulty:* Active tutorial;  \
   *What you’ll do:* Run **Helixer** (deep‑learning gene prediction), evaluate with **BUSCO**, and visualize in **JBrowse**; includes associated workflows and OMArk references. 
 
-* * **Comparison of two annotation tools — Helixer and BRAKER3** — *Topic:* Genomics / Sequence assembly;  \
+* **Comparison of two annotation tools — Helixer and BRAKER3** — \
+  *Topic:* Genomics / Sequence assembly;  \
   *Link:* <https://tess.elixir-europe.org/materials/comparison-of-two-annotation-tools-helixer-and-braker3>; \ 
   *Licence:* CC BY 4.0;  \
   *Difficulty:* Intermediate;  \
   *Why include:* Side‑by‑side comparison of two structural annotation strategies, plus BUSCO‑based benchmarking. 
 
-* **Functional annotation of protein sequences (EggNOG‑mapper \+ InterProScan)** — *Topic:* Genome Annotation (functional layer);  \
+* **Functional annotation of protein sequences (EggNOG‑mapper \+ InterProScan)** — \
+  *Topic:* Genome Annotation (functional layer);  \
   *Link:* <https://tess.elixir-europe.org/materials/hands-on-for-functional-annotation-of-protein-sequences-tutorial>;  
   *Licence:* CC BY 4.0;  \
   *Difficulty:* Active tutorial;  \
   *What you’ll do:* Add functional labels to predicted proteins using **eggNOG‑mapper** and **InterProScan**. 
 
-* **Genome annotation with Funannotate** — *Topic:* Genomics / Gene & protein families;  \
+* **Genome annotation with Funannotate** — \
+  *Topic:* Genomics / Gene & protein families;  \
   *Link:* <https://tess.elixir-europe.org/materials/hands-on-for-genome-annotation-with-funannotate-tutorial>;  \
   *Licence:* CC BY 4.0;  \
   *Difficulty:* Active tutorial;  \
   *Why include:* Complete eukaryotic workflow: structural and functional annotation, BUSCO QC, formatting for **NCBI** submission.
 
-* **Bacterial Genome Annotation (prokaryotic route)** — *Topic:* Genomics / Microbiology;  \
+* **Bacterial Genome Annotation (prokaryotic route)** — \
+  *Topic:* Genomics / Microbiology;  \
   *Link:* <https://tess.elixir-europe.org/materials/bacterial-genome-annotation>;  
   *Licence:* CC BY 4.0;  \
   *Difficulty:* Active tutorial;  \
   *What you’ll do:* Run tools to annotate a draft bacterial genome (including mobile elements), format outputs for visualization (**JBrowse**) and QC.
 
-* **Ensembl | EMBL‑EBI Training (browser workflows for curation/visualization)** — *Topic:* Genome annotation / Database management;  \
+* **Ensembl | EMBL‑EBI Training (browser workflows for curation/visualization)** — \
+  *Topic:* Genome annotation / Database management;  \
   *Link:* <https://tess.elixir-europe.org/materials/ensembl-embl-ebi-training>;  \
   *Licence:* CC BY 4.0;  \
   *Difficulty:* varies by course;  \
