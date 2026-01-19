@@ -227,8 +227,8 @@ Table: Testing similarity of related and unrelated materials
 
 | Pairs of material | Similarity score |
 | :---- | :---- |
-| Related: [A short introduction to Galaxy](https://training.galaxyproject.org/training-material/topics/introduction/tutorials/galaxy-intro-short/tutorial.html) and [Galaxy Basics for Genomics](https://training.galaxyproject.org/training-material/topics/introduction/tutorials/galaxy-intro-101/tutorial.html) | 92% |
-| Unrelated: [Access tomotools from visa.esrf.fr](https://pan-training.tesshub.hzdr.de/materials/access-tomotools-from-visa-esrf-fr?lp=2%3A5) and [Galaxy Basics for Genomics](https://training.galaxyproject.org/training-material/topics/introduction/tutorials/galaxy-intro-101/tutorial.html) | 17% |
+| Related: ["A short introduction to Galaxy"](https://training.galaxyproject.org/training-material/topics/introduction/tutorials/galaxy-intro-short/tutorial.html) and ["Galaxy Basics for Genomics"](https://training.galaxyproject.org/training-material/topics/introduction/tutorials/galaxy-intro-101/tutorial.html) | 92% |
+| Unrelated: ["Access tomotools from visa.esrf.fr"](https://pan-training.tesshub.hzdr.de/materials/access-tomotools-from-visa-esrf-fr?lp=2%3A5) and ["Galaxy Basics for Genomics"](https://training.galaxyproject.org/training-material/topics/introduction/tutorials/galaxy-intro-101/tutorial.html) | 17% |
 
 Once similar materials could be identified, we then explored whether materials could be dynamically be put into a Learning Path order, based on their complexity, as evaluated by the LLM (Microsoft Copilot was used).
 
@@ -261,9 +261,9 @@ One such dynamically generated Learning Path is given below. Note that these are
 
 ### **Learning Path \#3 — Genome Annotation**
 
-**Overarching topic (auto‑derived):** *genome annotation, eukaryote, jbrowse*  
-**Learning outcome (for the path):**  
-By the end, you will be able to **plan and run an end‑to‑end genome annotation workflow** for prokaryotic or eukaryotic genomes: perform **repeat masking**, execute **structural gene prediction** (e.g., **Maker**, **Helixer**, **Funannotate**, **BRAKER**), add **functional annotations** (e.g., InterProScan / eggNOG‑mapper), evaluate results with **BUSCO**, visualize annotations in **JBrowse**, and understand how to **submit/curate** results and metadata for public archives (e.g., **Ensembl**, **ENA/BioSamples**).
+> **Overarching topic (auto‑derived):** *genome annotation, eukaryote, jbrowse*  \
+> **Learning outcome (for the path):**  \
+> By the end, you will be able to **plan and run an end‑to‑end genome annotation workflow** for prokaryotic or eukaryotic genomes: perform **repeat masking**, execute **structural gene prediction** (e.g., **Maker**, **Helixer**, **Funannotate**, **BRAKER**), add **functional annotations** (e.g., InterProScan / eggNOG‑mapper), evaluate results with **BUSCO**, visualize annotations in **JBrowse**, and understand how to **submit/curate** results and metadata for public archives (e.g., **Ensembl**, **ENA/BioSamples**).
 
 **Materials in this learning path**
 
@@ -279,7 +279,43 @@ By the end, you will be able to **plan and run an end‑to‑end genome annotati
   *Difficulty:* Intermediate;  \
   *Why include:* A condensed Maker route that complements the full tutorial and reinforces structural annotation steps. 
 
-* ...
+* * **Genome annotation with Helixer** — *Topic:* Genomics / Biodiversity (eukaryota);  \
+  *Link:* <https://tess.elixir-europe.org/materials/genome-annotation-with-helixer>;  \
+  *Licence:* CC BY 4.0;  \
+  *Difficulty:* Active tutorial;  \
+  *What you’ll do:* Run **Helixer** (deep‑learning gene prediction), evaluate with **BUSCO**, and visualize in **JBrowse**; includes associated workflows and OMArk references. 
+
+* * **Comparison of two annotation tools — Helixer and BRAKER3** — *Topic:* Genomics / Sequence assembly;  \
+  *Link:* <https://tess.elixir-europe.org/materials/comparison-of-two-annotation-tools-helixer-and-braker3>; \ 
+  *Licence:* CC BY 4.0;  \
+  *Difficulty:* Intermediate;  \
+  *Why include:* Side‑by‑side comparison of two structural annotation strategies, plus BUSCO‑based benchmarking. 
+
+* **Functional annotation of protein sequences (EggNOG‑mapper \+ InterProScan)** — *Topic:* Genome Annotation (functional layer);  \
+  *Link:* <https://tess.elixir-europe.org/materials/hands-on-for-functional-annotation-of-protein-sequences-tutorial>;  
+  *Licence:* CC BY 4.0;  \
+  *Difficulty:* Active tutorial;  \
+  *What you’ll do:* Add functional labels to predicted proteins using **eggNOG‑mapper** and **InterProScan**. 
+
+* **Genome annotation with Funannotate** — *Topic:* Genomics / Gene & protein families;  \
+  *Link:* <https://tess.elixir-europe.org/materials/hands-on-for-genome-annotation-with-funannotate-tutorial>;  \
+  *Licence:* CC BY 4.0;  \
+  *Difficulty:* Active tutorial;  \
+  *Why include:* Complete eukaryotic workflow: structural and functional annotation, BUSCO QC, formatting for **NCBI** submission.
+
+* **Bacterial Genome Annotation (prokaryotic route)** — *Topic:* Genomics / Microbiology;  \
+  *Link:* <https://tess.elixir-europe.org/materials/bacterial-genome-annotation>;  
+  *Licence:* CC BY 4.0;  \
+  *Difficulty:* Active tutorial;  \
+  *What you’ll do:* Run tools to annotate a draft bacterial genome (including mobile elements), format outputs for visualization (**JBrowse**) and QC.
+
+* **Ensembl | EMBL‑EBI Training (browser workflows for curation/visualization)** — *Topic:* Genome annotation / Database management;  \
+  *Link:* <https://tess.elixir-europe.org/materials/ensembl-embl-ebi-training>;  \
+  *Licence:* CC BY 4.0;  \
+  *Difficulty:* varies by course;  \
+  *Why include:* Learn how to explore and curate annotations in **Ensembl**, positioning your outputs for community use and integration.
+
+> Additional ERGA listings you can use to extend this path further include items like **“Annotating genomes with non‑coding RNAs using Rfam and Infernal”**, **“OMA and OMArk for homology exploration”**, and **“Aligning whole genomes using Cactus”** (all visible on the ERGA provider page), which deepen comparative/annotation quality control steps. 
 
 An alternative to LLMs in similarity analysis would be to tokenise the total content of a training material, express it through vectorisation and with subsequent analysis by cosine similarities. This approach was briefly trialed at the hackathon on the whole content of the TeSS training registry. Further details can be found on the Biopragmatics blog [@citesForInformation:TapleyHoyt2025]. Whether this methodology is better than the LLM approach needs to be further explored. 
 
