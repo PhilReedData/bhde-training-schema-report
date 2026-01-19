@@ -97,9 +97,9 @@ authors_short: Reed, P. \emph{et al.}
 
 # Abstract
 
-The fragmentation of training materials across research infrastructures often results in unsustainable resource duplication and significant barriers to upskilling. This work aims to enable developers to build systems that effectively discover relevant materials by promoting a federated, **FAIR-compliant strategy** for open training. The project operated across three interrelated streams: metadata **interoperability**, material **analysis**, and the organisation of **learning paths**.
+The fragmentation of training materials across research infrastructures often results in unsustainable resource duplication and significant barriers to upskilling. This work aims to enable developers to build systems that effectively discover relevant materials by promoting a federated, **FAIR-compliant strategy** for open training. The project operated across three interrelated streams: metadata **interoperability**, material **analysis**, and the definition and representation of **learning paths in a machine readable manner**.
 
-To enhance interoperability, we indexed relevant ontologies and curated semantic **crosswalks** between established metadata models, specifically **MoDALIA** and **Schema.org/Bioschemas**. These mappings were implemented within the open-source **OERbservatory** Python package, providing a facility for exchanging data between platforms such as DALIA and TeSS. For material analysis, we utilised **Large Language Models (LLMs)** and vectorisation techniques to calculate cosine similarity, allowing for the identification of related materials and the deduplication of records across registries.
+To enhance interoperability, we indexed relevant ontologies and curated semantic **crosswalks** between established metadata models, specifically **MoDALIA** and **Schema.org/Bioschemas**. These mappings were implemented within the open-source **OERbservatory** Python package, providing a facility for exchanging data between platforms such as DALIA and TeSS. For material analysis, we utilised **Large Language Models (LLMs)** and vectorisation techniques to calculate similarity, allowing for the identification of related materials and the deduplication of records across registries.
 
 To address the lack of machine-actionable trajectories, we proposed **new Bioschemas profiles** specifically for **learning paths**. By extending Schema.org types, including Course and Syllabus, we developed a schema that supports modular and linear orderings of training materials. This model was validated using SPARQL queries on knowledge graphs derived from real-world examples like the Galaxy Training Network.
 
@@ -109,9 +109,9 @@ Finally, we demonstrated content **federation** via the **mTeSS-X** platform, en
 
 **Overall aim: Enable developers to build systems that support learners to find relevant training materials.**
 
-The distributed and fragmented nature of training materials across research infrastructures, institutions, and within project silos often leads to duplication of materials, wasted resources and storage, the inefficient use of those materials in upskilling personnel, and contributes to the lack of sustainability of the materials themselves. This situation is further exacerbated when considering cross-disciplinary materials, such as those for Research Data Management, which could be used across multiple domains. Several metadata standards are used by training catalogues, including Schema.org, Bioschemas and schemas.science. These search engine-based learning object metadata models enjoy a widespread adoption, although education-based data models are also available [@citesForInformation:Sonnati2024]. 
+The distributed and fragmented nature of training materials across research infrastructures, institutions, and within project silos often leads to duplication of materials, wasted resources and storage, the inefficient use of those materials in upskilling personnel, and contributes to the lack of sustainability of the materials themselves. This situation is further exacerbated when considering cross-disciplinary or domain-agnostic materials, such as those for Research Data Management, which are equally applicable or could be used across multiple domains. Furthermore, several metadata standards including Schema.org, Bioschemas and schemas.science are used by different training catalogues, making the identification of equivalent materials in different repositories more difficult. These search engine-based learning object metadata models enjoy a widespread adoption, although education-based data models are also available [@citesForInformation:Sonnati2024]. 
 
-One way to address these challenges would be to offer a federated solution, connecting across those project or institutional communities, and promoting a cohesive strategy towards FAIR and open training. The OSCARS mTeSS-X project strives to support this approach by using multi-tenancy and enabling cross-instance content exchange, for registries based on the TeSS Platform (Reed, 2025). This project would additionally facilitate the identification of learning paths or trajectories to enable individuals to leverage content across multiple ‘siloed’ materials, to achieve knowledge goals. Significant progress has been made by the [ELIXIR Learning Paths Focus Group](https://elixir-europe.org/focus-groups/learning-paths) to develop a learning paths protocol to guide learners to progressively acquire knowledge and skills on a subject of interest [@citesForInformation:Cardona2022]. Examples of learning paths developed by this protocol will launch throughout 2026.Additionally, ‘alternative’ paths could be offered across the problem space, which would be exposed, recognised and attributed, thereby identifying the original contributors. Many existing learning paths are linear and sequential, lacking legitimate and viable alternative trajectories.
+One way to address these challenges would be to offer a federated solution, connecting across those project or institutional communities/silos, and promoting a cohesive strategy towards FAIR and open training. The [OSCARS mTeSS-X project](https://elixirtess.github.io/mTeSS-X/) strives to support this approach by using multi-tenancy and enabling cross-instance content exchange, for registries based on the TeSS Platform [@citesForInformation:Reed2025]. The mTeSS-X project would additionally facilitate the identification of learning paths or trajectories to enable individuals to leverage content across multiple ‘siloed’ materials, to achieve knowledge goals. Significant progress has been made by the [ELIXIR Learning Paths Focus Group](https://elixir-europe.org/focus-groups/learning-paths) to develop a learning paths protocol to guide learners to progressively acquire knowledge and skills on a subject of interest [@citesForInformation:Cardona2022]. Examples of learning paths developed by this protocol will launch throughout 2026.Additionally, ‘alternative’ paths could be offered across the problem space, which would be exposed, recognised and attributed, thereby identifying the original contributors. Many existing learning paths are linear and sequential, lacking legitimate and viable alternative trajectories.
 
 In this project, we worked in three parallel, interrelated streams:
 
@@ -125,9 +125,9 @@ In this project, we worked in three parallel, interrelated streams:
    * Deduplicating and merging records across registries.  
    * Connecting training material producers at institutional and individual level, consolidating efforts.  
 3. Organisation into learning paths  
-   * Collecting examples of learning paths  
-   * Developing a schema that groups learning materials into a logical and modular ordering  
-   * Mocking up a schema by extending Schema.org/Bioschemas
+  * Collecting examples of learning paths to identify schema requirements  
+  * Developing a model based on requirements that enables grouping of learning materials into a logical and modular ordering  
+  * Mocking up/proposing a schema extending Schema.org/Bioschemas
 
 The first day of the project began with a [series of short presentations](https://docs.google.com/document/d/1KpRX1Q777Fzz8dcAx1jgiipiH6Zyir33_ds0xPK7M50/edit?usp=sharing) from several of the authors, plus a demonstration of ELIXIR BioHackathon Europe work titled ‘Mining the potential of knowledge graphs for metadata on training’ by Dimitris Panouris and Harshita Gupta of SciLifeLab. [@citesForInformation:Panouris2025]
 
@@ -143,7 +143,7 @@ Contributors: Phil Reed, Leyla Jael Castro
 
 Interoperability is the third pillar of the [FAIR data principles](https://www.nature.com/articles/sdata201618). Metadata describing training materials may be captured and stored in one of several data models including the DALIA Interchange Format (DIF) v1.3, the format implicitly defined by the TeSS API, and the Schema.org [LearningResource](https://schema.org/LearningResource) type. Further, metadata records conforming to these data models are filled with references to terms in other ontologies, controlled vocabularies, databases, and other resources that mint (persistent) identifiers. Our overarching goal at the hackathon was to improve interoperability on both levels.
 
-The Semantic Farm ([https://semantic.farm](https://semantic.farm/)) is a comprehensive database of metadata about resources that mint (persistent) identifiers (such as ontologies, controlled vocabularies, databases, schemas). It imports and aligns with other databases like [Identifiers.org](https://identifiers.org/) (for the life sciences) and [BARTOC](https://bartoc.org/) (for the digital humanities) to support interoperability and sustainability. The hackathon team produced [several valuable entries to the Semantic Farm](https://semantic.farm/collection/0000018) to better support the mapping and discovery of cross-disciplinary training materials, details of which can be found on the Biopragmatics blog \[@citesForInformation:TapleyHoyt2025\].
+The Semantic Farm ([https://semantic.farm](https://semantic.farm/)) is a database of metadata about resources that mint (persistent) identifiers (such as ontologies, controlled vocabularies, databases, schemas). It imports and aligns with other databases like [Identifiers.org](https://identifiers.org/) (for the life sciences) and [BARTOC](https://bartoc.org/) (for the digital humanities) to support interoperability and sustainability. The hackathon team produced [additional entries to the Semantic Farm](https://semantic.farm/collection/0000018) to better support the mapping and discovery of cross-disciplinary training materials, details of which can be found on the Biopragmatics blog \[@citesForInformation:TapleyHoyt2025\].
 
 Curating correspondences between concepts in ontologies, controlled vocabularies, and databases is often called semantic mapping. In contrast, curating correspondences between schemas and the properties therein is often called crosswalks. We put an emphasis on producing crosswalks between Schema.org and MoDALIA. This is a complex problem due to the fact that correspondences between elements in schemas can be more sophisticated (for example, mapping between two fields for first and last names to a single name field).
 
@@ -169,7 +169,7 @@ The next step towards interoperability beyond the conversion between formats use
 
 While we are currently in the process of implementing submission of open educational resources and learning materials in DALIA, TeSS already has a web-based interface for registering new learning materials. We implemented posting learning materials in the TeSS-specific Python package in [cthoyt/tess-downloader\#2](https://github.com/cthoyt/tess-downloader/pull/2). Then, it was only a matter of stringing together code that converts DALIA to OERbservatory, OERbservatory to TeSS, and then to upload to TeSS.
 
-In parallel, Martin worked on improving the devops behind the [PaNOSC TeSSHub](https://tesshub.hzdr.de/) to enable quickly spinning up new TeSS instances that each have their own subdomain. He created a different subdomain for each of DALIA, OERSI, GTN/KCD, and OERhub. Finally, we wrote a script that uploaded all open educational resources and learning material from each source to the appropriate TeSS instance in [data-literacy-alliance/oerbservatory\#3](https://github.com/data-literacy-alliance/oerbservatory/pull/3). The results in each space can be explored here:
+In parallel, we worked on improving the devops behind the [PaNOSC TeSSHub](https://tesshub.hzdr.de/) to enable quickly spinning up new TeSS instances that each have their own subdomain. He created a different subdomain for each of DALIA, OERSI, GTN/KCD, and OERhub. Finally, we wrote a script that uploaded all open educational resources and learning material from each source to the appropriate TeSS instance in [data-literacy-alliance/oerbservatory\#3](https://github.com/data-literacy-alliance/oerbservatory/pull/3). The results in each space can be explored here:
 
 |Source	|Domain|  
 |---|---|  
@@ -184,7 +184,7 @@ In parallel, Martin worked on improving the devops behind the [PaNOSC TeSSHub](h
 
 ## Future work
 
-* OSCARS mTeSS-X deliverable: demonstrate exchange of training material between registries.  
+* Continue to demonstrate exchange of training material between registries using TeSS.  
 * New deployment of DALIA implementing interoperability layer.
 
 
@@ -195,11 +195,13 @@ Contributors: Phil Reed, Leyla Jael Castro
 
 ## What we did
 
-One aim of this track was to develop a strategy to identify similar or related materials from distributed resources. High quality metadata has been used to automatically construct or modify personalised learning paths of materials for over 20 years [@citesForInformation:Colace2005]. Tools and techniques have improved since then, most recently with the availability of generative AI. Furthermore, we considered an analogous progression, that of Swiss-Prot (1980s) versus TrEMBL (1990s), where ... TODO
+One aim of this track was to develop a strategy to identify similar or related materials hosted in distributed resources. High quality metadata has been used to automatically construct or modify personalised learning paths of materials for over 20 years [@citesForInformation:Colace2005]. Tools and techniques have improved since then, most recently with the availability of generative AI. An analogy can be made between the increasing number of Training Materials being created, with the protein sequence submission pipeline to the Life Sciences database ‘UniProt’, where in the 1980s, the ability to manually curate individual submissions was overwhelmed by the sheer increase in number of submissions, due to improving technologies and tooling. The solution implemented comprised the implementation of an automated (machine) curation ‘early’ annotation system (1990s, ‘TrEMBL’), which was clearly demarcated from manual (higher quality) curation records (‘SWISS-PROT’ records). Hence, here we envisage a similar scenario where LLMs can be used to identify and express relationships between training materials (equivalence, close relations and sequence), with manual ‘validation’ (upvoting or user review) downstream. 
 
-Two questions emerged from the group discussions:
+Some questions emerged from the group discussions:
 
-* Can we automatically pick up related materials from distributed resources and arrange them into a learning path?  
+* Can we automatically pick up related materials from distributed resources?  
+* Can we define some metrics to evaluate ‘similarity’?  
+* Can we predict which are sequentially more complex, and arrange them into a learning path?  
 * Can we generate learning path suggestions dynamically from registries of materials with sufficient metadata?
 
 We looked into using large language models (LLMs) to construct learning paths through machine-assisted dialogue. The idea was to take in a list of learning materials (either hard-coded or as a URL for the chat system to retrieve) and a prompt to ask the LLM to collect similar materials based on objectives and keywords, then create a learning path based on difficult (which is infrequently annotated) and suggest a title.
@@ -207,41 +209,81 @@ We looked into using large language models (LLMs) to construct learning paths th
 
 ![Suggest learning paths from materials using LLM](./copilot.png)
 
-We constructed a workflow formed of a basic prompt, built in comparison of topics, with a weighting of ‘properties’ using embedded metadata (with differing quality/availability).
+We first discussed criteria which could enable cross comparison, and tested those on related materials in TeSS. After some adjustments to weighting of each criteria, we settled on the following:
+
+Table: Weighted criteria for determining similarity of materials
+
+| Criteria | Weighting |
+| :---- | ----: |
+| Objectives | 30% |
+| Keywords | 30% |
+| Level | 15% |
+| Supporting Materials | 15% |
+| License | 10% |
+
+We further tested using materials from Galaxy that were related versus materials that were unrelated.
+
+Table: Testing similarity of related and unrelated materials
+
+| Pairs of material | Similarity score |
+| :---- | :---- |
+| Related: [A short introduction to Galaxy](https://training.galaxyproject.org/training-material/topics/introduction/tutorials/galaxy-intro-short/tutorial.html) and [Galaxy Basics for Genomics](https://training.galaxyproject.org/training-material/topics/introduction/tutorials/galaxy-intro-101/tutorial.html) | 92% |
+| Unrelated: [Access tomotools from visa.esrf.fr](https://pan-training.tesshub.hzdr.de/materials/access-tomotools-from-visa-esrf-fr?lp=2%3A5) and [Galaxy Basics for Genomics](https://training.galaxyproject.org/training-material/topics/introduction/tutorials/galaxy-intro-101/tutorial.html) | 17% |
+
+Once similar materials could be identified, we then explored whether materials could be dynamically be put into a Learning Path order, based on their complexity, as evaluated by the LLM (Microsoft Copilot was used).
+
+We progressively engineered our prompts to Copilot, with a final step:
+
+> “..Then for similar materials suggest an overarching topic, collect those materials together as a learning path, display the overarching topic, the topic of each material in the learning path, the hyperlink to each material, and provide a learning outcome for each path.”
 
 
 Table: Prompt input
 
-| Input | Description |
+| Inpu steps | Description |
 | :---- | :---- |
 | List of materials 	 | hard coded or point to a registry (page) |
 | Collect similar materials | based on objectives & keywords |
 | Create paths / order	 | based on difficulty (often missing) |
 | Suggest a title	 | overarching lesson name |
 
+Towards the end of our work, we collected a variety of ‘random’ Training Materials and asked our LLM to find as many possible Learning Paths or trajectories through the materials, with a proposed overarching topic. In one such activity, we identified 3 paths through a page of materials.
 
 Table: Prompt output. Each path (named) is ordered, reference link, difficulty rating, individual title, licence and provider
 
-| Output | Size |
+| Output (Lesson subject) | Size (Training material items) |
 | :---- | :---- |
 | Path 1: Sequencing and QC | 10 items |
 | Path 2: Git and Version Control | 6 items |
 | Path 3: Genome Annotation | 8 items |
 
-Working in parallel, other team members were ... TODO
+One such dynamically generated Learning Path is given below. Note that these are TrLPs, following the analogy with TrEMBL made earlier, and would require manual validation, even if the overarching topic and individual materials do appear logical.
 
 
-Observations of learning path similarity:
+### **Learning Path \#3 — Genome Annotation**
 
-* Detect duplicate materials  
-* There were 417 pairs with cosine similarity over 0.9  
-* Detect similar materials to support consolidating production efforts  
-* Metadata (title, description, objectives, etc) was vectorized using sentence-transformers and pairwise cosine similarity was computed  
-  * More than just keywords
+**Overarching topic (auto‑derived):** *genome annotation, eukaryote, jbrowse*  
+**Learning outcome (for the path):**  
+By the end, you will be able to **plan and run an end‑to‑end genome annotation workflow** for prokaryotic or eukaryotic genomes: perform **repeat masking**, execute **structural gene prediction** (e.g., **Maker**, **Helixer**, **Funannotate**, **BRAKER**), add **functional annotations** (e.g., InterProScan / eggNOG‑mapper), evaluate results with **BUSCO**, visualize annotations in **JBrowse**, and understand how to **submit/curate** results and metadata for public archives (e.g., **Ensembl**, **ENA/BioSamples**).
 
-![Statistical analysis](./stats.png)
+**Materials in this learning path**
 
-![Chart showing distribution of cosine similarities between TeSS training materials](./cosine.png){ width=200px }
+* **Genome annotation with Maker (GTN hands‑on)** — *Topic:* Genomics / Genome Annotation (eukaryote);  \
+  *Link:* <https://tess.elixir-europe.org/materials/hands-on-for-genome-annotation-with-maker-tutorial>;  \
+  *Licence:* Creative Commons Attribution 4.0 International (CC BY 4.0);  \
+  *Difficulty:* Active tutorial;  \
+  *What you’ll do:* Load a genome in Galaxy, run **Maker**, evaluate with **BUSCO**, and visualize in **JBrowse**. 
+
+* **Hands‑on: Genome annotation with Maker (short)** — *Topic:* Genome annotation (eukaryote);  \
+  *Link:* <https://tess.elixir-europe.org/materials/hands-on-genome-annotation-with-maker-genome-annotation-with-maker-genome-annotation>;  \
+  *Licence:* CC BY 4.0;  \
+  *Difficulty:* Intermediate;  \
+  *Why include:* A condensed Maker route that complements the full tutorial and reinforces structural annotation steps. 
+
+* ...
+
+An alternative to LLMs in similarity analysis would be to tokenise the total content of a training material, express it through vectorisation and with subsequent analysis by cosine similarities. This approach was briefly trialed at the hackathon on the whole content of the TeSS training registry. Further details can be found on the Biopragmatics blog [@citesForInformation:TapleyHoyt2025]. Whether this methodology is better than the LLM approach needs to be further explored. 
+
+
 
 
 ## Why it is useful, the impact of this work
@@ -254,9 +296,10 @@ Observations of learning path similarity:
 
 ## Future work
 
-* Exploring further using LLMs.  
 * More formal way of measuring similarity between materials, dynamically (at different levels, in different domains, in different formats eg video/text).  
-* Dependent on high quality metadata at the level of individual training materials, so there are recommendations for training registries.
+  * Question: is ingestion of ‘total’ material ‘better’ than using LLM, demonstrably  
+* Dependent on high quality metadata at the level of individual training materials, so there are recommendations for training registries.  
+  * Define the metadata that match the ‘criteria’ used by LLMs prediction (above), promote their use or mapping in bioschemas etc, and see if material identification by LLM is improved. This is actionable.
 
 
 # Organisation into learning paths; schemas and automation
