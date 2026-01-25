@@ -109,7 +109,7 @@ Finally, we demonstrated content **federation** via the **mTeSS-X** platform, en
 
 **Overall aim: Enable developers to build systems that support learners to find relevant training materials.**
 
-The distributed and fragmented nature of training materials across research infrastructures, institutions, and within project silos often leads to duplication of materials, wasted resources and storage, the inefficient use of those materials in upskilling personnel, and contributes to the lack of sustainability of the materials themselves. This situation is further exacerbated when considering cross-disciplinary or domain-agnostic materials, such as those for Research Data Management, which are equally applicable or could be used across multiple domains. Furthermore, several metadata standards including Schema.org, Bioschemas and schemas.science are used by different training catalogues, making the identification of equivalent materials in different repositories more difficult. These search engine-based learning object metadata models enjoy a widespread adoption, although education-based data models are also available [@citesForInformation:Sonnati2024]. 
+The distributed and fragmented nature of training materials across research infrastructures, institutions, and within project silos often leads to duplication of materials, wasted resources and storage, the inefficient use of those materials in upskilling personnel, and contributes to the lack of sustainability of the materials themselves. This situation is further exacerbated when considering cross-disciplinary or domain-agnostic materials, such as those for Research Data Management, which are equally applicable or could be used across multiple domains. Furthermore, several metadata standards including [Schema.org](http://Schema.org), [Bioschemas](https://bioschemas.org/), [schemas.science](https://schemas.science/), [PaNET](https://github.com/ExPaNDS-eu/ExPaNDS-experimental-techniques-ontology) and [MoDALIA](https://dalia.pages.rwth-aachen.de/dalia-ontology/) are used by different training catalogues, making the identification of equivalent materials in different repositories more difficult. These search engine-based learning object metadata models enjoy a widespread adoption, although education-based data models are also available [@citesForInformation:Sonnati2024]. 
 
 One way to address these challenges would be to offer a federated solution, connecting across those project or institutional communities/silos, and promoting a cohesive strategy towards FAIR and open training. The [OSCARS mTeSS-X project](https://elixirtess.github.io/mTeSS-X/) strives to support this approach by using multi-tenancy and enabling cross-instance content exchange, for registries based on the TeSS Platform [@citesForInformation:Reed2025]. The mTeSS-X project would additionally facilitate the identification of learning paths or trajectories to enable individuals to leverage content across multiple ‘siloed’ materials, to achieve knowledge goals. Significant progress has been made by the [ELIXIR Learning Paths Focus Group](https://elixir-europe.org/focus-groups/learning-paths) to develop a learning paths protocol to guide learners to progressively acquire knowledge and skills on a subject of interest [@citesForInformation:Cardona2022]. Examples of learning paths developed by this protocol will launch throughout 2026.Additionally, ‘alternative’ paths could be offered across the problem space, which would be exposed, recognised and attributed, thereby identifying the original contributors. Many existing learning paths are linear and sequential, lacking legitimate and viable alternative trajectories.
 
@@ -143,7 +143,7 @@ Contributors: Phil Reed, Leyla Jael Castro
 
 Interoperability is the third pillar of the [FAIR data principles](https://www.nature.com/articles/sdata201618). Metadata describing training materials may be captured and stored in one of several data models including the DALIA Interchange Format (DIF) v1.3, the format implicitly defined by the TeSS API, and the Schema.org [LearningResource](https://schema.org/LearningResource) type. Further, metadata records conforming to these data models are filled with references to terms in other ontologies, controlled vocabularies, databases, and other resources that mint (persistent) identifiers. Our overarching goal at the hackathon was to improve interoperability on both levels.
 
-The Semantic Farm ([https://semantic.farm](https://semantic.farm/)) is a database of metadata about resources that mint (persistent) identifiers (such as ontologies, controlled vocabularies, databases, schemas). It imports and aligns with other databases like [Identifiers.org](https://identifiers.org/) (for the life sciences) and [BARTOC](https://bartoc.org/) (for the digital humanities) to support interoperability and sustainability. The hackathon team produced [additional entries to the Semantic Farm](https://semantic.farm/collection/0000018) to better support the mapping and discovery of cross-disciplinary training materials, details of which can be found on the Biopragmatics blog \[@citesForInformation:TapleyHoyt2025\].
+The Semantic Farm ([https://semantic.farm](https://semantic.farm/)) is a database of metadata about resources that mint (persistent) identifiers (such as ontologies, controlled vocabularies, databases, schemas). It imports and aligns with other databases like [Identifiers.org](https://identifiers.org/) (for the life sciences) and [BARTOC](https://bartoc.org/) (for the digital humanities) to support interoperability and sustainability. The hackathon team produced [additional entries to the Semantic Farm](https://semantic.farm/collection/0000018) to better support the mapping and discovery of cross-disciplinary training materials, details of which can be found on the Biopragmatics blog [@citesForInformation:TapleyHoyt2025].
 
 Curating correspondences between concepts in ontologies, controlled vocabularies, and databases is often called semantic mapping. In contrast, curating correspondences between schemas and the properties therein is often called crosswalks. We put an emphasis on producing crosswalks between Schema.org and MoDALIA. This is a complex problem due to the fact that correspondences between elements in schemas can be more sophisticated (for example, mapping between two fields for first and last names to a single name field).
 
@@ -151,7 +151,7 @@ Curating correspondences between concepts in ontologies, controlled vocabularies
 
 ### Implementation of mappings and interchange
 
-The OERbservatory Data Model was proposed as an interoperability hub between DALIA and TeSS. During the hackathon, we implemented the open source [OERbservatory](https://github.com/data-literacy-alliance/oerbservatory) Python package. It includes three major features:
+The OERbservatory Data Model was proposed as an interoperability hub between DALIA and TeSS. During the hackathon, we implemented the open source [OERbservatory](https://doi.org/10.5281/zenodo.18346546) Python package. It includes three major features:
 
 1. a unified, generic [object model](https://github.com/data-literacy-alliance/oerbservatory/blob/main/src/oerbservatory/model.py) for open educational resources that’s effectively the union of the best parts of DALIA, TeSS, Schema.org, and a few other data models we found  
 2. import and export to two open educational resource and learning materials data models - DALIA and TeSS. We didn’t have time during the hackathon to implement import and export to Schema.org.  
@@ -169,7 +169,7 @@ The next step towards interoperability beyond the conversion between formats use
 
 While we are currently in the process of implementing submission of open educational resources and learning materials in DALIA, TeSS already has a web-based interface for registering new learning materials. We implemented posting learning materials in the TeSS-specific Python package in [cthoyt/tess-downloader\#2](https://github.com/cthoyt/tess-downloader/pull/2). Then, it was only a matter of stringing together code that converts DALIA to OERbservatory, OERbservatory to TeSS, and then to upload to TeSS.
 
-In parallel, we worked on improving the devops behind the [PaNOSC TeSSHub](https://tesshub.hzdr.de/) to enable quickly spinning up new TeSS instances that each have their own subdomain. He created a different subdomain for each of DALIA, OERSI, GTN/KCD, and OERhub. Finally, we wrote a script that uploaded all open educational resources and learning material from each source to the appropriate TeSS instance in [data-literacy-alliance/oerbservatory\#3](https://github.com/data-literacy-alliance/oerbservatory/pull/3). The results in each space can be explored here:
+In parallel, we worked on improving the devops behind the [PaNOSC TeSSHub](https://tesshub.hzdr.de/) to enable quickly spinning up new TeSS instances that each have their own subdomain. We created a different subdomain for each of DALIA, OERSI, GTN/KCD, and OERhub. Finally, we wrote a script that uploaded all open educational resources and learning material from each source to the appropriate TeSS instance in [data-literacy-alliance/oerbservatory\#3](https://github.com/data-literacy-alliance/oerbservatory/pull/3). The results in each space can be explored here:
 
 |Source	|Domain|  
 |---|---|  
@@ -234,7 +234,7 @@ Once similar materials could be identified, we then explored whether materials c
 
 We progressively engineered our prompts to Copilot, with a final step:
 
-> “..Then for similar materials suggest an overarching topic, collect those materials together as a learning path, display the overarching topic, the topic of each material in the learning path, the hyperlink to each material, and provide a learning outcome for each path.”
+> “...Then for similar materials suggest an overarching topic, collect those materials together as a learning path, display the overarching topic, the topic of each material in the learning path, the hyperlink to each material, and provide a learning outcome for each path.”
 
 
 Table: Prompt input
@@ -422,9 +422,9 @@ The demonstration of content federation via the **mTeSS-X platform** marks a cri
 
 # GitHub repositories, Jupyter notebooks and data repositories
 
-* [data-literacy-alliance/dalia-dif](https://github.com/data-literacy-alliance/dalia-dif) implements a parser for the DALIA DIF v1.3 tabular format, an internal representation of the content (using Pydantic), and an RDF serialiser  
-* [cthoyt/tess-downloader](https://github.com/cthoyt/tess-downloader) implements an API client to TeSS and an internal representation of the learning resource data model (using Pydantic)  
-* [OERbservatory](https://github.com/data-literacy-alliance/oerbservatory)  
+* [data-literacy-alliance/dalia-dif](https://github.com/data-literacy-alliance/dalia-dif) implements a parser for the DALIA DIF v1.3 tabular format, an internal representation of the content (using Pydantic), and an RDF serialiser [doi:10.5281/zenodo.17532539](https://doi.org/10.5281/zenodo.17532539)
+* [cthoyt/tess-downloader](https://github.com/cthoyt/tess-downloader) implements an API client to TeSS and an internal representation of the learning resource data model (using Pydantic) [doi:10.5281/zenodo.17792402](https://doi.org/10.5281/zenodo.17792402)
+* [OERbservatory](https://github.com/data-literacy-alliance/oerbservatory) [doi:10.5281/zenodo.18346546](https://doi.org/10.5281/zenodo.18346546) 
 * mTeSS-X: [TeSS Platform](https://github.com/ElixirTeSS/TeSS)  
 * [Learning Paths Sandbox (Bioschemas)](https://github.com/BioSchemas/LearningPath-sandbox)
 
@@ -432,6 +432,6 @@ The demonstration of content federation via the **mTeSS-X platform** marks a cri
 
 ## Acknowledgements
 
-...
+We thank the organisers of BioHackathon Germany 2025, and ELIXIR BioHackathon Europe 2025 since there was significant project collaboration across the two events. We thank Dimitris Panouris and Harshite Gupta for their presentation "Mining the potential of knowledge graphs for metadata on training", created with Geert van Geest and Vincent Emonet. We thank Helena Schnitzer and Carole Goble who supported the project submission, and finally OSCARS for funding travel and attendance. 
 
 ## References
