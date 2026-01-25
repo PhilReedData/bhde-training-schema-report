@@ -169,13 +169,8 @@ While we are currently in the process of implementing submission of open educati
 
 In parallel, we worked on improving the devops behind the [PaNOSC TeSSHub](https://tesshub.hzdr.de/) to enable quickly spinning up new TeSS instances that each have their own subdomain. We created a different subdomain for each of DALIA, OERSI, GTN/KCD, and OERhub. Finally, we wrote a script that uploaded all open educational resources and learning material from each source to the appropriate TeSS instance in [data-literacy-alliance/oerbservatory\#3](https://github.com/data-literacy-alliance/oerbservatory/pull/3). The results in each space can be explored here:
 
-|Source	|Domain|  
-|---|---|  
-|DALIA	|https://dalia.tesshub.hzdr.de|  
-|OERhub	|https://oerhub.tesshub.hzdr.de|  
-|OERSI	|https://oersi.tesshub.hzdr.de|  
-|GTN/deKCD	|https://kcd.tesshub.hzdr.de|  
-|PanOSC	|https://panosc.tesshub.hzdr.de|
+* [DALIA materials imported into a TeSSHub](https://dalia.tesshub.hzdr.de)
+
 
 ![mTeSS-X strategic planning. Prepared for focus group demonstration of exchanged training materials. Looking ahead to share to the EOSC Catalogue.](./tesshub.png)
 
