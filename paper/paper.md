@@ -398,19 +398,6 @@ The Galaxy Training Network is already using [Syllabus](https://schema.org/Sylla
 * Define the mapping between MoDALIA and Bioschemas for learning paths.
 
 
-# Discussion
-
-## Provocation
-
-* Analysis, augmentation and generation of learning paths
-
-## Analysis
-
-* Learning paths need to be extendable. Adding a step at any position creates another valid learning path.  
-
-## Recommendations
-
-* Dynamic building, registration and documenting of learning paths
 
 # Conclusion
 
