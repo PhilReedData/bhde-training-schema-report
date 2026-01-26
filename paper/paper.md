@@ -99,9 +99,9 @@ authors_short: Reed, P. \emph{et al.}
 
 The fragmentation of training materials across research infrastructures often results in unsustainable resource duplication and significant barriers to upskilling. This work aims to enable developers to build systems that effectively discover relevant materials by promoting a federated, **FAIR-compliant strategy** for open training. The project operated across three interrelated streams: metadata **interoperability**, material **analysis**, and the definition and representation of **learning paths in a machine readable manner**.
 
-We demonstrated content **federation** via the **mTeSS-X** platform, enabling cross-instance exchange and preparing for future integration with the EOSC federation. To enhance interoperability, we indexed relevant ontologies and curated semantic **crosswalks** between established metadata models, specifically **MoDALIA** and **Schema.org/Bioschemas**. These mappings were implemented within the open-source **OERbservatory** Python package, providing a facility for exchanging data between platforms such as DALIA and TeSS. For material analysis, we utilised **Large Language Models (LLMs)** and vectorisation techniques to calculate similarity, allowing for the identification of related materials and the deduplication of records across registries.
+We demonstrated content **federation** via the **mTeSS-X** platform, enabling cross-instance exchange and preparing for future integration with the EOSC federation. To enhance interoperability, we indexed relevant ontologies and curated semantic **crosswalks** between established metadata models, specifically **MoDALIA** and **Schema.org/Bioschemas**. These mappings were implemented within the open-source **OERbservatory** Python package, providing a facility for exchanging data between platforms such as DALIA and TeSS. For material analysis, we utilised **Large Language Models (LLMs)** and explored vectorisation techniques to calculate similarity, allowing for the identification of related materials and the potential for future deduplication of records across registries.
 
-To address the lack of machine-actionable trajectories, we proposed **new Bioschemas profiles** specifically for **learning paths**. By extending Schema.org types, including Course and Syllabus, we developed a schema that supports modular and linear orderings of training materials. This model was validated using SPARQL queries on knowledge graphs derived from real-world examples like the Galaxy Training Network. Such advancements provide a foundation for automated path generation and improved discoverability within training catalogues.
+To address the lack of machine-actionable trajectories across related or sequential materials, we proposed **new Bioschemas profiles** specifically for **learning paths**. By extending Schema.org types, including Course and Syllabus, we developed a schema that supports modular and linear orderings of training materials. This model was validated using SPARQL queries on **knowledge graphs** derived from real-world examples like the Galaxy Training Network. Such advancements provide a foundation for automated path generation and improved discoverability within training catalogues, and serves as a use case and strategy with broader applicability beyond those materials.
 
 # Introduction
 
@@ -109,7 +109,7 @@ To address the lack of machine-actionable trajectories, we proposed **new Biosch
 
 The distributed and fragmented nature of training materials across research infrastructures, institutions, and within project silos often leads to duplication of materials, wasted resources and storage, the inefficient use of those materials in upskilling personnel, and contributes to the lack of sustainability of the materials themselves. This situation is further exacerbated when considering cross-disciplinary or domain-agnostic materials, such as those for Research Data Management, which are equally applicable or could be used across multiple domains. Furthermore, several metadata standards including [Schema.org](http://Schema.org), [Bioschemas](https://bioschemas.org/), [schemas.science](https://schemas.science/), [PaNET](https://github.com/ExPaNDS-eu/ExPaNDS-experimental-techniques-ontology) and [MoDALIA](https://dalia.pages.rwth-aachen.de/dalia-ontology/) are used by different training catalogues, making the identification of equivalent materials in different repositories more difficult. These search engine-based learning object metadata models enjoy a widespread adoption, although education-based data models are also available [@citesForInformation:Sonnati2024]. 
 
-One way to address these challenges would be to offer a federated solution, connecting across those project or institutional communities/silos, and promoting a cohesive strategy towards FAIR and open training. The [OSCARS mTeSS-X project](https://elixirtess.github.io/mTeSS-X/) strives to support this approach by using multi-tenancy and enabling cross-instance content exchange, for registries based on the TeSS Platform [@citesForInformation:Reed2025]. The mTeSS-X project would additionally facilitate the identification of learning paths or trajectories to enable individuals to leverage content across multiple ‘siloed’ materials, to achieve knowledge goals. Significant progress has been made by the [ELIXIR Learning Paths Focus Group](https://elixir-europe.org/focus-groups/learning-paths) to develop a learning paths protocol to guide learners to progressively acquire knowledge and skills on a subject of interest [@citesForInformation:Cardona2022]. Examples of learning paths developed by this protocol will launch throughout 2026.Additionally, ‘alternative’ paths could be offered across the problem space, which would be exposed, recognised and attributed, thereby identifying the original contributors. Many existing learning paths are linear and sequential, lacking legitimate and viable alternative trajectories.
+One way to address these challenges would be to offer a federated solution, connecting across those projects or institutional communities/silos, and promoting a cohesive strategy towards FAIR and open training. The [OSCARS mTeSS-X project](https://elixirtess.github.io/mTeSS-X/) strives to support this approach by using multi-tenancy and enabling cross-instance content exchange, for registries based on the TeSS Platform [@citesForInformation:Reed2025]. The mTeSS-X project would additionally facilitate the identification of learning paths or trajectories to enable individuals to leverage content across multiple ‘siloed’ materials, to achieve knowledge goals. Significant progress has been made by the [ELIXIR Learning Paths Focus Group](https://elixir-europe.org/focus-groups/learning-paths) to develop a learning paths protocol to guide learners to progressively acquire knowledge and skills on a subject of interest [@citesForInformation:Cardona2022]. Examples of learning paths developed by this protocol will launch throughout 2026.Additionally, ‘alternative’ paths could be offered across the problem space, which would be exposed, recognised and attributed, thereby identifying the original contributors. Many existing learning paths are linear and sequential, lacking legitimate and viable alternative trajectories.
 
 In this project, we worked in three parallel, interrelated streams:
 
@@ -132,18 +132,13 @@ The first day of the project began with a [series of short presentations](https:
 
 # Training material interoperability; express relations between materials
 
-Authors: Charles Tapley Hoyt, Oliver Knodel, Martin Voigt, Jacobo Miranda, Petra Steiner 
-
-Contributors: Phil Reed, Leyla Jael Castro 
-
-
 ## Interoperability through semantic mapping and crosswalks
 
-Interoperability is the third pillar of the [FAIR data principles](https://www.nature.com/articles/sdata201618). Metadata describing training materials may be captured and stored in one of several data models including the DALIA Interchange Format (DIF) v1.3, the format implicitly defined by the TeSS API, and the Schema.org [LearningResource](https://schema.org/LearningResource) type. Further, metadata records conforming to these data models are filled with references to terms in other ontologies, controlled vocabularies, databases, and other resources that mint (persistent) identifiers. Our overarching goal at the hackathon was to improve interoperability on both levels.
+Interoperability is the third pillar of the [FAIR data principles](https://www.nature.com/articles/sdata201618) [@citesForInformation:Wilkinson2016]. Metadata describing training materials may be captured and stored in one of several data models including the DALIA Interchange Format (DIF) v1.3 [@citesForInformation:Geiger2024], the format implicitly defined by the TeSS API, and the Schema.org [LearningResource](https://schema.org/LearningResource) type. Further, metadata records conforming to these data models are filled with references to terms in other ontologies, controlled vocabularies, databases, and other resources that mint (persistent) identifiers. Our overarching goal at the hackathon was to improve interoperability on both levels.
 
 The Semantic Farm ([https://semantic.farm](https://semantic.farm/)) is a database of metadata about resources that mint (persistent) identifiers (such as ontologies, controlled vocabularies, databases, schemas). It imports and aligns with other databases like [Identifiers.org](https://identifiers.org/) (for the life sciences) and [BARTOC](https://bartoc.org/) (for the digital humanities) to support interoperability and sustainability. The hackathon team produced [additional entries to the Semantic Farm](https://semantic.farm/collection/0000018) to better support the mapping and discovery of cross-disciplinary training materials, details of which can be found on the Biopragmatics blog [@citesForInformation:TapleyHoyt2025].
 
-Curating correspondences between concepts in ontologies, controlled vocabularies, and databases is often called semantic mapping. In contrast, curating correspondences between schemas and the properties therein is often called crosswalks. We put an emphasis on producing crosswalks between Schema.org and MoDALIA. This is a complex problem due to the fact that correspondences between elements in schemas can be more sophisticated (for example, mapping between two fields for first and last names to a single name field).
+Curating correspondences between concepts in ontologies, controlled vocabularies, and databases is often called semantic mapping. In contrast, curating correspondences between schemas and the properties therein is often called crosswalks. We put an emphasis on producing crosswalks between Schema.org and MoDALIA. This is a complex problem because correspondences between elements in schemas can be more sophisticated (for example, mapping between two fields for first and last names to a single name field), or the defined values of the ranges can differ For instance, ‘[has target group](https://dalia.pages.rwth-aachen.de/dalia-ontology/index-en.html#hasTargetGroup)’ in MoDALIA is strictly defined by a picklist, while [audience](https://schema.org/audience) in [Schema.org](http://schema.org) is usually combined with an educational role. Furthermore, complete or even near-synonymy is more the exception than the rule. For the mapping, [SSSOM](https://mapping-commons.github.io/sssom/) has been used.
 
 ![Curated crosswalks between MoDALIA and Schema.org metadata models for training materials](./mapping-sssom.png)
 
@@ -151,9 +146,9 @@ Curating correspondences between concepts in ontologies, controlled vocabularies
 
 The OERbservatory Data Model was proposed as an interoperability hub between DALIA and TeSS. During the hackathon, we implemented the open source [OERbservatory](https://doi.org/10.5281/zenodo.18346546) Python package. It includes three major features:
 
-1. a unified, generic [object model](https://github.com/data-literacy-alliance/oerbservatory/blob/main/src/oerbservatory/model.py) for open educational resources that’s effectively the union of the best parts of DALIA, TeSS, Schema.org, and a few other data models we found  
-2. import and export to two open educational resource and learning materials data models - DALIA and TeSS. We didn’t have time during the hackathon to implement import and export to Schema.org.  
-3. import from three external learning material repositories - [OERhub](https://oerhub.at/), [OERSI](https://oersi.org/), and the [Galaxy Training Network (GTN)](https://training.galaxyproject.org/).
+1. A unified, generic [object model](https://github.com/data-literacy-alliance/oerbservatory/blob/main/src/oerbservatory/model.py) for open educational resources that’s effectively the union of the best parts of DALIA, TeSS, Schema.org, and a few other data models we found.  
+2. Import and export to two open educational resource and learning materials data models - DALIA and TeSS. We didn’t have time during the hackathon to implement import and export to Schema.org.  
+3. Import from three external learning material repositories - [OERhub](https://oerhub.at/), [OERSI](https://oersi.org/), and the [Galaxy Training Network (GTN)](https://training.galaxyproject.org/).
 
 [Further](https://training.galaxyproject.org/) details of OERbservatory can be found on the Biopragmatics blog [@citesForInformation:TapleyHoyt2025].
 
@@ -182,9 +177,6 @@ In parallel, we worked on improving the devops behind the [PaNOSC TeSSHub](https
 
 
 # Training material analysis; identify similar materials
-
-Authors: Nick Juty, Dilfuza Djamalova, Charles Tapley Hoyt  
-Contributors: Phil Reed, Leyla Jael Castro
 
 ## What we did
 
@@ -340,10 +332,6 @@ An alternative to LLMs in similarity analysis would be to tokenise the total con
 
 
 # Organisation into learning paths; schemas and automation
-
-
-Authors: Phil Reed, Alban Gaignard, Leyla Jael Castro  
-Contributors: Nick Juty, Roman Baum
 
 ## What we did
 
